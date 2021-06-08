@@ -1,6 +1,10 @@
 apply plugin: "jacoco"
 
+/*
+    running ./gradlew :module_name:debugCodeCoverage
+*/
 jacoco {
+    toolVersion = "0.8.7"
     reportsDir = file("$buildDir/${project.name}_code_coverage")
 }
 
@@ -50,19 +54,18 @@ project.afterEvaluate {
                     '**/BuildConfig.*',
                     '**/*Component*.*',
                     '**/*BR*.*',
-                    '**/Manifest*.*',
-                    '**/*$Lambda$*.*',
-                    '**/*Companion*.*',
                     '**/*Module.*', /* filtering Dagger modules classes */
                     '**/*Dagger*.*',/* filtering Dagger-generated classes */
                     '**/*MembersInjector*.*',
                     '**/*_Factory*.*',
                     '**/*_Provide*Factory*.*',
-                    '**/*Extensions*.*',
-                    '**/*$Result.*', /* filtering `sealed` and `data` classes */
-                    '**/*$Result$*.*',/* filtering `sealed` and `data` classes */
                     '**/*Args*.*', /* filtering Navigation Component generated classes */
-                    '**/*Directions*.*' /* filtering Navigation Component generated classes */
+                    '**/*Directions*.*' /* filtering Navigation Component generated classes */,
+//                    '**/*$Lambda$*.*',
+//                    '**/*Companion*.*',
+//                    '**/*Extensions*.*',
+//                    '**/*$Result.*', /* filtering `sealed` and `data` classes */
+//                    '**/*$Result$*.*',/* filtering `sealed` and `data` classes */
             ]
 
             classDirectories.setFrom(files([
